@@ -3,10 +3,8 @@
 import { Button } from "@/components/ui/button"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -118,8 +116,17 @@ export default function Home() {
               <CardHeader className="relative">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 text-white">
+                    <BarChart3 className="w-6 h-6" />
                   </div>
+                  <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300">
+                    Starter
+                  </Badge>
                 </div>
+                <CardTitle className="text-2xl">Full SEO Reports</CardTitle>
+                <CardDescription className="text-base">
+                  Generate comprehensive SEO reports powered by Bright
+                  Data&apos;s advanced SERP Perplexity Scraper technology.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
