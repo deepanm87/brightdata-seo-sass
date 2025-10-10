@@ -24,6 +24,24 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!prompt || isLoading) return
+
+    setIsLoading(true)
+    try {
+      const response = await startScraping(prompt, undefined, country)
+      if (response.ok) {
+        const snapshotId = response.data.snapshot_id
+        router.push(`/dashboard/report/${snapshotId}`)
+      } else {
+        console.error(response.error)
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
