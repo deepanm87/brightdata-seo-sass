@@ -1,7 +1,7 @@
 "use server"
 
 import { ApiPath } from "@/convex/http"
-import { buildPerplexityPrompt } from '@/prompts/perplexity'
+import { buildPerplexityPrompt } from "@/prompts/perplexity"
 import { ConvexHttpClient } from "convex/browser"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
@@ -68,7 +68,13 @@ const startScraping = async (
   const ENDPOINT = `${process.env.NEXT_PUBLIC_CONVEX_SITE_URL}${ApiPath.Webhook}?jobId=${jobId}`
   const encodedEndpoint = encodeURIComponent(ENDPOINT)
 
-    const url = `https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_m7dhdot1vw9a7gc1n&endpoint=${encodedEndpoint}&format=json&uncompressed_webhook=true&include_errors=true`
+  const datasetId = process.env.BRIGHTDATA_DATASET_ID
+
+  if (!datasetId) {
+    throw new Error("BRIGHTDATA_DATASET_ID is not set")
+  }
+
+    const url = `https://api.brightdata.com/datasets/v3/trigger?dataset_id=${datasetId}&endpoint=${encodedEndpoint}&format=json&uncompressed_webhook=true&include_errors=true`
 
     const perplexityPrompt = buildPerplexityPrompt(prompt)
 
@@ -118,7 +124,7 @@ const startScraping = async (
       if (data && data.snapshot_id) {
         await convex.mutation(api.scrapingJobs.updateJobWithSnapshotId, {
           jobId: jobId as Id<"scrapingJobs">,
-          snapshot: data.snapshot_id
+          snapshotId: data.snapshot_id
         })
       }
 
