@@ -100,7 +100,7 @@ export default function DashboardPage() {
                         className="h-14 px-6 md:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600
                         hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 border-0 shadow-lg
                           hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 group font-semibold
-                          w-full md:w-auto"
+                          w-full md:w-auto cursor-pointer"
                         disabled={isLoading || !prompt.trim()}
                       >
                         { isLoading ? (
