@@ -68,8 +68,8 @@ export default function Home() {
                 <SignInButton mode="modal" forceRedirectUrl="/dashboard">
                   <Button
                     size="lg"
-                    className="text-base px-8 py-6 bg-gradient-to-r from-blue-600 hover:from-blue-700 hover:from-blue-700 hover:to-purple-700
-                      shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 group border-0"
+                    className="text-base px-8 py-6 bg-gradient-to-r from-blue-600 hover:from-blue-700 hover:to-purple-700
+                      shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 group border-0 cursor-pointer"
                   >
                     <Search className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
                     Generate My Report
